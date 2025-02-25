@@ -13,7 +13,7 @@ import { CartBadge } from "./components/CartBadge/CartBadge";
 
 export const App: React.FC = () => {
     return (
-        <Router basename="/store">
+        <Router basename="/">
             <ScrollToTop />
             <Header />
             <CartBadge />
