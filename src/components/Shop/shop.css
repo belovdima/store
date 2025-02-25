@@ -16,15 +16,29 @@
     border: 1px solid var(--text-color);
     background: white;
     transition: background 0.3s ease;
-    text-align: left;
+    text-align: center; /* Центрируем текст */
 }
 
-/* Изображение */
+/* Изображение товара */
 .product-card img {
     width: 100%;
     height: 300px;
     border-bottom: 1px solid var(--text-color);
     object-fit: cover;
+}
+
+/* Значок скидки ("SALE") */
+.sale-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 4px 12px;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    background: transparent;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 /* Контейнер с текстом */
@@ -43,46 +57,31 @@
     font-weight: 700;
 }
 
-/* Цена товара */
+/* Блок цены */
 .product-price {
     display: flex;
     align-items: center;
-    color: var(--text-color);
+    justify-content: center; /* Центрируем цену */
+    margin-top: 5px;
     font-size: 20px;
     font-weight: 600;
     gap: 10px;
 }
 
-/* Старая цена (если товар со скидкой) */
+/* Цена товара (актуальная) */
+.discount-price {
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+/* Старая цена (зачеркнутая) */
 .old-price {
-    opacity: 0.6;
-    font-size: 16px;
+    opacity: 0.5;
+    font-size: 18px;
     text-decoration: line-through;
 }
 
-/* Значок скидки */
-.sale-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 5px 10px;
-    color: white;
-    background: var(--text-color);
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-/* Линия-разделитель */
-.product-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 0;
-    border-top: 1px solid var(--text-color);
-}
-
-/* Кнопка */
+/* Кнопка "Add to Cart" */
 .btn-buy {
     width: 100%;
     padding: 12px;
@@ -98,4 +97,33 @@
 .btn-buy:hover {
     color: white;
     background: var(--text-color);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .product-card {
+        padding: 15px;
+    }
+
+    .product-title {
+        font-size: 18px;
+    }
+
+    .product-price {
+        font-size: 16px;
+    }
+
+    .discount-price {
+        font-size: 18px;
+    }
+
+    .btn-buy {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .sale-badge {
+        padding: 3px 10px;
+        font-size: 10px;
+    }
 }

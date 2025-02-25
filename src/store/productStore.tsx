@@ -4,6 +4,7 @@ interface Product {
     id: number;
     title: string;
     price: number;
+    discountPrice?: number;
     img: string;
     category: "men" | "women";
 }
@@ -18,6 +19,7 @@ export const useProductStore = create<ProductStore>(() => ({
             id: 1,
             title: "Minimal Sneakers",
             price: 150,
+            discountPrice: 120,
             img: "https://i1.proimagescdn.ru/images/bimages/1414/IF8577_1.jpg",
             category: "men",
         },
@@ -25,6 +27,7 @@ export const useProductStore = create<ProductStore>(() => ({
             id: 2,
             title: "Black Hoodie",
             price: 90,
+            discountPrice: 70,
             img: "https://i1.proimagescdn.ru/images/bimages/1378/HDZPFVCKBK_1.webp",
             category: "men",
         },

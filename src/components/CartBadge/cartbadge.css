@@ -4,8 +4,14 @@
     z-index: 200;
     top: 0;
     left: 50%;
-    padding: 10px 20px;
-    border-radius: 0 0 20px 20px;
+    display: flex;
+    overflow: hidden; /* Обрезает текст, если он не помещается */
+    align-items: center;
+    justify-content: center;
+    width: 100px; /* Фиксированная ширина */
+    height: 30px; /* Фиксированная высота */
+    padding: 5px 10px;
+    border-radius: 0 0 15px 15px;
     color: white;
     background: black;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -13,10 +19,12 @@
     transition: transform 0.3s ease, opacity 0.3s ease;
     transform: translateX(-50%);
     text-align: center;
+    white-space: nowrap; /* Запрещает перенос строки */
     font-size: 18px;
     font-weight: 600;
 }
 
+/* Ховер-анимация */
 .cart-badge:hover {
     transform: translateX(-50%) scale(1.05);
 }
