@@ -1,0 +1,22 @@
+/* Чёлка корзины */
+.cart-badge {
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 50%;
+    padding: 10px 20px;
+    border-radius: 0 0 20px 20px;
+    color: white;
+    background: black;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.cart-badge:hover {
+    transform: translateX(-50%) scale(1.05);
+}
