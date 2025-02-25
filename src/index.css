@@ -1,3 +1,10 @@
+@import "./components/Header/header.css";
+@import "./components/About/about.css";
+@import "./components/Contact/contact.css";
+@import "./components/Footer/footer.css";
+@import "./components/Home/home.css";
+@import "./components/Products/products.css";
+
 /* Подключение шрифтов */
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
 
@@ -93,28 +100,6 @@ h3 {
     background-color: var(--accent-color);
 }
 
-/* Навигация */
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
-    font-size: 18px;
-}
-
-.navbar a {
-    margin: 0 15px;
-    font-weight: 500;
-}
-
-/* Футер */
-.footer {
-    padding: 40px 0;
-    color: #666;
-    text-align: center;
-    font-size: 14px;
-}
-
 /* Адаптив */
 @media (max-width: 768px) {
     h1 {
@@ -135,163 +120,19 @@ h3 {
     }
 }
 
-/* Сетка товаров */
-.products-grid {
-    display: grid;
-    margin-top: 40px;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .category-banners {
+        flex-direction: column;
+        gap: 10px;
+    }
 
-/* Карточка товара */
-.product-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
-    border: 1px solid var(--text-color);
-    background: white;
-    transition: background 0.3s ease;
-    text-align: left;
-}
+    .category-banner {
+        width: 100%;
+        height: 400px;
+    }
 
-/* Изображение */
-.product-card img {
-    width: 100%;
-    height: 300px;
-    border-bottom: 1px solid var(--text-color);
-    object-fit: cover;
-}
-
-/* Контейнер с текстом */
-.product-info {
-    display: flex;
-    flex-direction: column;
-    padding: 15px 0;
-}
-
-/* Название товара */
-.product-title {
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 22px;
-    font-weight: 700;
-}
-
-/* Цена товара */
-.product-price {
-    display: flex;
-    align-items: center;
-    color: var(--text-color);
-    font-size: 20px;
-    font-weight: 600;
-    gap: 10px;
-}
-
-/* Старая цена (если товар со скидкой) */
-.old-price {
-    opacity: 0.6;
-    font-size: 16px;
-    text-decoration: line-through;
-}
-
-/* Значок скидки */
-.sale-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 5px 10px;
-    color: white;
-    background: var(--text-color);
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-/* Линия-разделитель */
-.product-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 0;
-    border-top: 1px solid var(--text-color);
-}
-
-/* Кнопка */
-.btn-buy {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--text-color);
-    color: var(--text-color);
-    background: none;
-    transition: background 0.3s ease, color 0.3s ease;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.btn-buy:hover {
-    color: white;
-    background: var(--text-color);
-}
-
-/* About Section */
-.about-section {
-    max-width: 800px;
-    padding: 80px 0;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.about-text {
-    line-height: 1.8;
-    opacity: 0.9;
-    color: var(--text-color);
-    text-align: left;
-    font-size: 18px;
-}
-
-/* Contact Section */
-.contact-section {
-    max-width: 800px;
-    padding: 80px 0;
-    margin: 0 auto;
-    text-align: center;
-}
-
-/* Контейнер с блоками */
-.contact-content {
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-    text-align: left;
-    gap: 30px;
-}
-
-/* Каждый блок */
-.contact-block h3 {
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.contact-block p {
-    line-height: 1.6;
-    opacity: 0.9;
-    font-size: 16px;
-}
-
-.contact-block a {
-    color: var(--text-color);
-    transition: opacity 0.3s ease;
-    font-size: 16px;
-    font-weight: 500;
-    text-decoration: underline;
-}
-
-.contact-block a:hover {
-    opacity: 0.6;
+    .category-title {
+        font-size: 36px;
+    }
 }

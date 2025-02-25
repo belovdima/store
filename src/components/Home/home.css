@@ -1,0 +1,148 @@
+/* Hero Section */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background: var(--bg-color);
+    text-align: center;
+}
+
+.hero-title {
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    margin: 20px 0;
+    opacity: 0.8;
+    font-size: 20px;
+}
+
+.hero-btn {
+    padding: 14px 32px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+/* Featured Products */
+.featured-products {
+    padding: 80px 0;
+}
+
+/* About Preview */
+.about-preview {
+    max-width: 800px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.about-text {
+    line-height: 1.8;
+    margin-bottom: 20px;
+    opacity: 0.9;
+    font-size: 18px;
+}
+
+/* Contact Preview */
+.contact-preview {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.contact-text {
+    margin-bottom: 20px;
+    opacity: 0.8;
+    font-size: 16px;
+}
+
+/* Men & Women Sections */
+.men-section,
+.women-section {
+    padding: 80px 0;
+}
+
+/* Разделение заголовков */
+.men-section h2,
+.women-section h2 {
+    margin-bottom: 40px;
+}
+
+/* Блок с категориями */
+.category-banners {
+    display: flex;
+    padding: 80px 0;
+    gap: 20px;
+}
+
+/* Плакат категории */
+.category-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 500px;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Блок с категориями */
+.category-banners {
+    display: flex;
+    padding: 80px 0;
+    gap: 10px;
+}
+
+/* Плакат категории */
+.category-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 600px;
+    border: 1px solid var(--text-color);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+}
+
+/* Задний фон Men */
+.category-banner.men {
+    background-image: url("https://img.brandshop.ru/cache/products/m/men_home_20250211_1392x1448.jpg");
+}
+
+/* Задний фон Women */
+.category-banner.women {
+    background-image: url("https://img.brandshop.ru/cache/products/w/women_home_20250211_1392x1448.jpg");
+}
+
+/* Заголовки категорий */
+.category-title {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--text-color);
+    background: white;
+    text-transform: uppercase;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+/* Кнопка внутри баннера */
+.category-btn {
+    padding: 12px 24px;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    background: white;
+    transition: background 0.3s ease, color 0.3s ease;
+    font-size: 16px;
+}
+
+.category-btn:hover {
+    color: white;
+    background: var(--text-color);
+}
