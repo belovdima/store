@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
     plugins: [react()],
-    base: "/store/", // Название репозитория
+    base: "./", // Название репозитория
     build: {
         outDir: "dist", // Куда собирать проект
         emptyOutDir: true, // Удаляет старые файлы перед билдом
