@@ -5,14 +5,15 @@ export const Home: React.FC = () => {
     return (
         <div>
             {/* Hero Section */}
-            <section className="hero-section">
+            <section className="hero">
                 <div className="container">
                     <h1 className="hero-title">
-                        Timeless Aesthetic. <br /> Modern Simplicity.
+                        Timeless Aesthetic.
+                        <br /> Modern Simplicity.
                     </h1>
                     <p className="hero-subtitle">
-                        Minimalist essentials designed for those who seek
-                        effortless style.
+                        Minimalist essentials for those who seek effortless
+                        style.
                     </p>
                     <Link to="/shop" className="btn hero-btn">
                         Shop Now
@@ -21,43 +22,40 @@ export const Home: React.FC = () => {
             </section>
 
             {/* Men & Women Banners */}
-            <section className="category-banners container">
-                <div className="category-banner men">
+            <section className="categories container">
+                <Link
+                    to="/shop/men"
+                    className="category-banner"
+                    style={{
+                        backgroundImage:
+                            "url('https://plus.unsplash.com/premium_photo-1677838847781-07bba550c639?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bWVuc3dlYXIlMjBtb2RlbCUyMGdyYXl8ZW58MHx8MHx8fDA%3D')",
+                    }}>
                     <h2 className="category-title">Men</h2>
-                    <Link to="/shop/men" className="btn category-btn">
-                        Shop Men
-                    </Link>
-                </div>
-                <div className="category-banner women">
+                </Link>
+
+                <Link
+                    to="/shop/women"
+                    className="category-banner"
+                    style={{
+                        backgroundImage:
+                            "url('https://plus.unsplash.com/premium_photo-1677838847808-686ac388d5f6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWVuc3dlYXIlMjBtb2RlbCUyMGdyYXl8ZW58MHx8MHx8fDA%3D')",
+                    }}>
                     <h2 className="category-title">Women</h2>
-                    <Link to="/shop/women" className="btn category-btn">
-                        Shop Women
-                    </Link>
-                </div>
+                </Link>
             </section>
 
             {/* About */}
-            <section className="about-preview container">
+            <section className="about container">
                 <h2 className="h2 text-center">About</h2>
                 <p className="about-text">
                     We create <strong>timeless essentials</strong> that blend
                     contemporary edge with minimalistic purity. Inspired by
                     architecture, movement, and raw textures, we strip away the
-                    excess to reveal the <strong>essence of design</strong>.
+                    excess to reveal the
+                    <strong> essence of design</strong>.
                 </p>
                 <Link to="/about" className="btn">
                     Learn More
-                </Link>
-            </section>
-
-            {/* Contact */}
-            <section className="contact-preview container">
-                <h2 className="h2 text-center">Need Help?</h2>
-                <p className="contact-text">
-                    For inquiries, collaborations, or support, reach out to us.
-                </p>
-                <Link to="/contact" className="btn">
-                    Contact Us
                 </Link>
             </section>
         </div>
