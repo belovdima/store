@@ -143,8 +143,9 @@ h3 {
     gap: 20px;
 }
 
-/* Минималистичная карточка товара */
+/* Карточка товара */
 .product-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -165,27 +166,63 @@ h3 {
 
 /* Контейнер с текстом */
 .product-info {
+    display: flex;
+    flex-direction: column;
     padding: 15px 0;
 }
 
-/* Название и цена */
+/* Название товара */
 .product-title {
     margin-bottom: 8px;
     text-transform: uppercase;
-    font-size: 18px;
+    letter-spacing: 0.05em;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* Цена товара */
+.product-price {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 600;
+    gap: 10px;
+}
+
+/* Старая цена (если товар со скидкой) */
+.old-price {
+    opacity: 0.6;
+    font-size: 16px;
+    text-decoration: line-through;
+}
+
+/* Значок скидки */
+.sale-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    color: white;
+    background: var(--text-color);
+    text-transform: uppercase;
+    font-size: 12px;
     font-weight: 600;
 }
 
-.product-price {
-    color: var(--text-color);
-    font-size: 16px;
-    font-weight: 500;
+/* Линия-разделитель */
+.product-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-top: 1px solid var(--text-color);
 }
 
 /* Кнопка */
 .btn-buy {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid var(--text-color);
     color: var(--text-color);
     background: none;
