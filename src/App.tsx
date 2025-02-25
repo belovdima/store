@@ -5,7 +5,7 @@ const products = [
         id: 1,
         title: "Minimal Sneakers",
         price: "$150",
-        img: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/2bb3bd73-0061-433f-a360-990451967f7f/NIKE+AIR+MAX+1+PRM.png",
+        img: "https://i1.proimagescdn.ru/images/bimages/1414/IF8577_1.jpg",
     },
     {
         id: 2,
