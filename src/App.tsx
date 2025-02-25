@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { Home } from "./components/Home/Home";
@@ -13,7 +13,7 @@ import { CartBadge } from "./components/CartBadge/CartBadge";
 
 export const App: React.FC = () => {
     return (
-        <Router>
+        <HashRouter>
             <ScrollToTop />
             <Header />
             <CartBadge />
@@ -26,6 +26,6 @@ export const App: React.FC = () => {
                 <Route path="/cart" element={<Cart />} />
             </Routes>
             <Footer />
-        </Router>
+        </HashRouter>
     );
 };
