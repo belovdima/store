@@ -1,7 +1,80 @@
 /* Футер */
 .footer {
-    padding: 40px 0;
-    color: #666;
+    padding: 50px 20px;
+    margin-top: 80px; /* Добавляем отступ сверху */
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background: var(--bg-color);
     text-align: center;
+}
+
+/* Контейнер футера */
+.footer-content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+/* Логотип и бренд */
+.footer-brand {
+    text-align: left;
+}
+
+.footer-logo {
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Навигация */
+.footer-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-nav a {
+    transition: opacity 0.3s ease;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.footer-nav a:hover {
+    opacity: 0.7;
+}
+
+/* Соцсети */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-socials a {
+    transition: opacity 0.3s ease;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.footer-socials a:hover {
+    opacity: 0.7;
+}
+
+/* Нижняя часть футера */
+.footer-bottom {
+    margin-top: 30px;
+    color: #666;
     font-size: 14px;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
 }
