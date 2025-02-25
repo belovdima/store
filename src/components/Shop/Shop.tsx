@@ -33,7 +33,7 @@ const products = [
     },
 ];
 
-export const Products: React.FC = () => {
+export const Shop: React.FC = () => {
     return (
         <>
             {/* Заголовок */}

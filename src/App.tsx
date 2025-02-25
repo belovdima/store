@@ -5,7 +5,7 @@ import { Footer } from "./components/Footer/Footer";
 import { Home } from "./components/Home/Home";
 import { About } from "./components/About/About";
 import { Contact } from "./components/Contact/Contact";
-import { Products } from "./components/Products/Products";
+import { Shop } from "./components/Shop/Shop";
 
 export const App: React.FC = () => {
     return (
@@ -13,7 +13,7 @@ export const App: React.FC = () => {
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/shop" element={<Products />} />
+                <Route path="/shop" element={<Shop />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
             </Routes>
