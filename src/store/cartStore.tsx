@@ -1,5 +1,6 @@
 import { create } from "zustand";
 
+// Интерфейс для товаров в корзине
 interface CartItem {
     id: number;
     title: string;
@@ -8,6 +9,7 @@ interface CartItem {
     quantity: number;
 }
 
+// Интерфейс состояния корзины
 interface CartStore {
     cart: CartItem[];
     addToCart: (item: CartItem) => void;
@@ -15,28 +17,37 @@ interface CartStore {
     clearCart: () => void;
 }
 
+// Функция для загрузки корзины из localStorage
+const loadCartFromStorage = (): CartItem[] => {
+    const storedCart = localStorage.getItem("cart");
+    return storedCart ? JSON.parse(storedCart) : [];
+};
+
 export const useCartStore = create<CartStore>((set) => ({
-    cart: [],
+    cart: loadCartFromStorage(), // Загружаем сохранённые товары
 
     addToCart: (item) =>
         set((state) => {
             const existingItem = state.cart.find((i) => i.id === item.id);
-            if (existingItem) {
-                return {
-                    cart: state.cart.map((i) =>
-                        i.id === item.id
-                            ? { ...i, quantity: i.quantity + 1 }
-                            : i
-                    ),
-                };
-            }
-            return { cart: [...state.cart, { ...item, quantity: 1 }] };
+            const updatedCart = existingItem
+                ? state.cart.map((i) =>
+                      i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+                  )
+                : [...state.cart, { ...item, quantity: 1 }];
+
+            localStorage.setItem("cart", JSON.stringify(updatedCart)); // Сохраняем в localStorage
+            return { cart: updatedCart };
         }),
 
     removeFromCart: (id) =>
-        set((state) => ({
-            cart: state.cart.filter((item) => item.id !== id),
-        })),
+        set((state) => {
+            const updatedCart = state.cart.filter((item) => item.id !== id);
+            localStorage.setItem("cart", JSON.stringify(updatedCart)); // Обновляем localStorage
+            return { cart: updatedCart };
+        }),
 
-    clearCart: () => set({ cart: [] }),
+    clearCart: () => {
+        localStorage.removeItem("cart"); // Удаляем из localStorage
+        set({ cart: [] });
+    },
 }));
