@@ -1,4 +1,6 @@
 import React from "react";
+import { About } from "./components/About";
+import { Contact } from "./components/Contact";
 
 const products = [
     {
@@ -35,52 +37,58 @@ const products = [
 
 export const App: React.FC = () => {
     return (
-        <div>
-            {/* Навигация */}
-            <nav className="navbar">
-                <a href="#">Home</a>
-                <a href="#">Shop</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-            </nav>
+        <>
+            <div>
+                {/* Навигация */}
+                <nav className="navbar">
+                    <a href="#">Home</a>
+                    <a href="#">Shop</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </nav>
 
-            {/* Заголовок */}
-            <div className="container section text-center">
-                <h1 className="h1">Discover Our Collection</h1>
-            </div>
+                {/* Заголовок */}
+                <div className="container section text-center">
+                    <h1 className="h1">Discover Our Collection</h1>
+                </div>
 
-            {/* Сетка товаров */}
-            <div className="container products-grid">
-                {products.map((product) => (
-                    <div key={product.id} className="product-card">
-                        {product.sale && (
-                            <span className="sale-badge">Sale</span>
-                        )}
-                        <img src={product.img} alt={product.title} />
-                        <div className="product-info">
-                            <h3 className="product-title">{product.title}</h3>
-                            <p className="product-price">
-                                {product.sale ? (
-                                    <>
+                {/* Сетка товаров */}
+                <div className="container products-grid">
+                    {products.map((product) => (
+                        <div key={product.id} className="product-card">
+                            {product.sale && (
+                                <span className="sale-badge">Sale</span>
+                            )}
+                            <img src={product.img} alt={product.title} />
+                            <div className="product-info">
+                                <h3 className="product-title">
+                                    {product.title}
+                                </h3>
+                                <p className="product-price">
+                                    {product.sale ? (
+                                        <>
+                                            <span>{product.price}</span>
+                                            <span className="old-price">
+                                                {product.oldPrice}
+                                            </span>
+                                        </>
+                                    ) : (
                                         <span>{product.price}</span>
-                                        <span className="old-price">
-                                            {product.oldPrice}
-                                        </span>
-                                    </>
-                                ) : (
-                                    <span>{product.price}</span>
-                                )}
-                            </p>
+                                    )}
+                                </p>
+                            </div>
+                            <button className="btn-buy">Add to Cart</button>
                         </div>
-                        <button className="btn-buy">Add to Cart</button>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
 
-            {/* Футер */}
-            <footer className="footer">
-                <p>© 2025 Minimalist Store. All rights reserved.</p>
-            </footer>
-        </div>
+                {/* Футер */}
+                <footer className="footer">
+                    <p>© 2025 Minimalist Store. All rights reserved.</p>
+                </footer>
+            </div>
+            <About />
+            <Contact />
+        </>
     );
 };
