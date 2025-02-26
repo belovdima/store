@@ -37,6 +37,7 @@ export const useProductStore = create<ProductStore>(() => ({
             type: "shoes",
             color: "grey",
             size: ["40", "42", "43", "44"],
+            discountPrice: 200,
         },
         {
             id: 3,

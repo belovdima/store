@@ -4,6 +4,7 @@ interface CartItem {
     id: number;
     title: string;
     price: number;
+    discountPrice?: number;
     img: string;
     quantity: number;
 }
@@ -23,11 +24,13 @@ export const useCartStore = create<CartStore>((set) => ({
     addToCart: (item) =>
         set((state) => {
             const existingItem = state.cart.find((i) => i.id === item.id);
+            const price = item.discountPrice ?? item.price;
+
             const updatedCart = existingItem
                 ? state.cart.map((i) =>
                       i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
                   )
-                : [...state.cart, { ...item, quantity: 1 }];
+                : [...state.cart, { ...item, price, quantity: 1 }];
 
             return { cart: updatedCart };
         }),

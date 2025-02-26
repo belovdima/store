@@ -10,7 +10,6 @@ export const Cart: React.FC = () => {
         decreaseQuantity,
     } = useCartStore();
 
-    // Подсчет общей суммы
     const totalPrice = cart.reduce(
         (sum, item) => sum + item.price * item.quantity,
         0
