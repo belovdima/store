@@ -1,6 +1,5 @@
 import { create } from "zustand";
 
-// Интерфейс для товаров в корзине
 interface CartItem {
     id: number;
     title: string;
@@ -9,22 +8,17 @@ interface CartItem {
     quantity: number;
 }
 
-// Интерфейс состояния корзины
 interface CartStore {
     cart: CartItem[];
     addToCart: (item: CartItem) => void;
     removeFromCart: (id: number) => void;
+    increaseQuantity: (id: number) => void;
+    decreaseQuantity: (id: number) => void;
     clearCart: () => void;
 }
 
-// Функция для загрузки корзины из localStorage
-const loadCartFromStorage = (): CartItem[] => {
-    const storedCart = localStorage.getItem("cart");
-    return storedCart ? JSON.parse(storedCart) : [];
-};
-
 export const useCartStore = create<CartStore>((set) => ({
-    cart: loadCartFromStorage(), // Загружаем сохранённые товары
+    cart: [],
 
     addToCart: (item) =>
         set((state) => {
@@ -35,19 +29,29 @@ export const useCartStore = create<CartStore>((set) => ({
                   )
                 : [...state.cart, { ...item, quantity: 1 }];
 
-            localStorage.setItem("cart", JSON.stringify(updatedCart)); // Сохраняем в localStorage
             return { cart: updatedCart };
         }),
 
     removeFromCart: (id) =>
-        set((state) => {
-            const updatedCart = state.cart.filter((item) => item.id !== id);
-            localStorage.setItem("cart", JSON.stringify(updatedCart)); // Обновляем localStorage
-            return { cart: updatedCart };
-        }),
+        set((state) => ({
+            cart: state.cart.filter((item) => item.id !== id),
+        })),
 
-    clearCart: () => {
-        localStorage.removeItem("cart"); // Удаляем из localStorage
-        set({ cart: [] });
-    },
+    increaseQuantity: (id) =>
+        set((state) => ({
+            cart: state.cart.map((item) =>
+                item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+            ),
+        })),
+
+    decreaseQuantity: (id) =>
+        set((state) => ({
+            cart: state.cart.map((item) =>
+                item.id === id && item.quantity > 1
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item
+            ),
+        })),
+
+    clearCart: () => set({ cart: [] }),
 }));

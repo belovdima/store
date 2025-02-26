@@ -1,8 +1,14 @@
 import React from "react";
-import { useCartStore } from "./../../store/cartStore";
+import { useCartStore } from "../../store/cartStore";
 
 export const Cart: React.FC = () => {
-    const { cart, removeFromCart, clearCart } = useCartStore();
+    const {
+        cart,
+        removeFromCart,
+        clearCart,
+        increaseQuantity,
+        decreaseQuantity,
+    } = useCartStore();
 
     // Подсчет общей суммы
     const totalPrice = cart.reduce(
@@ -26,6 +32,27 @@ export const Cart: React.FC = () => {
                                 <p>
                                     ${item.price} × {item.quantity}
                                 </p>
+
+                                <div className="cart-controls">
+                                    <button
+                                        className="btn-quantity"
+                                        onClick={() =>
+                                            decreaseQuantity(item.id)
+                                        }>
+                                        -
+                                    </button>
+                                    <span className="cart-quantity">
+                                        {item.quantity}
+                                    </span>
+                                    <button
+                                        className="btn-quantity"
+                                        onClick={() =>
+                                            increaseQuantity(item.id)
+                                        }>
+                                        +
+                                    </button>
+                                </div>
+
                                 <button
                                     className="btn-remove"
                                     onClick={() => removeFromCart(item.id)}>
