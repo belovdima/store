@@ -67,7 +67,15 @@ export const ProductPage: React.FC = () => {
                 <button
                     className={styles.btnBuy}
                     onClick={() =>
-                        selectedSize && addToCart({ ...product, quantity: 1 })
+                        selectedSize &&
+                        addToCart({
+                            id: product.id,
+                            title: product.title,
+                            price: product.discountPrice ?? product.price,
+                            img: product.img,
+                            quantity: 1,
+                            size: selectedSize,
+                        })
                     }
                     disabled={!selectedSize}>
                     {selectedSize ? "Add to Cart" : "Select size"}

@@ -7,7 +7,7 @@ interface CartItem {
     discountPrice?: number;
     img: string;
     quantity: number;
-    size: string; // ✅ Добавлено поле "size"
+    size: string;
 }
 
 interface CartStore {
