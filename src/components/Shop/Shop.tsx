@@ -12,15 +12,9 @@ export const Shop: React.FC = () => {
             <div className="products-grid">
                 {products.map((product) => (
                     <div key={product.id} className="product-card">
-                        {/* Значок "SALE", если есть скидка */}
-                        {product.discountPrice && (
-                            <div className="sale-badge">SALE</div>
-                        )}
-
                         <img src={product.img} alt={product.title} />
                         <h3 className="product-title">{product.title}</h3>
 
-                        {/* Цена: если есть скидка - показываем старую цену */}
                         <p className="product-price">
                             {product.discountPrice ? (
                                 <>

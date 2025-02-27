@@ -2,64 +2,63 @@
 .products-grid {
     display: grid;
     margin-top: 40px;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(300px, 1fr)
-    ); /* ✅ Чуть больше карточки */
-    gap: 40px; /* ✅ Больше воздуха */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
 }
 
 /* Карточка товара */
 .product-card {
     position: relative;
     display: flex;
+    overflow: hidden; /* Оверлей не выходит за границы */
     align-items: center;
     flex-direction: column;
-    padding: 20px; /* ✅ Добавили пространство */
-    transition: transform 0.2s ease, opacity 0.3s ease;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background 0.3s ease;
     text-align: center;
 }
 
-/* Эффект лёгкого увеличения при наведении */
-.product-card:hover {
-    transform: scale(1.02);
+/* Оверлей при наведении (теперь не перекрывает кнопку) */
+.product-card::after {
+    position: absolute;
+    z-index: 0; /* Оставляем его под кнопкой */
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.05); /* Светло-серый оттенок */
+    content: "";
+    transition: opacity 0.3s ease;
+    inset: 0;
 }
 
-/* Блок с изображением (чтобы фото было квадратным) */
+/* Наведение на карточку */
+.product-card:hover::after {
+    opacity: 1;
+}
+
+/* Блок с изображением */
 .product-image-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 20px; /* ✅ Создаёт "воздух" вокруг фото */
-    background: #f7f7f7; /* ✅ Добавили нейтральный фон */
+    padding: 20px;
+    border-radius: 10px;
+    background: #f7f7f7;
 }
 
 /* Само изображение */
 .product-card img {
     width: 100%;
-    max-width: 280px; /* ✅ Делаем фото квадратным */
-    border-radius: 8px; /* ✅ Лёгкое скругление */
+    max-width: 280px;
+    border-radius: 8px;
     object-fit: cover;
-    aspect-ratio: 1/1; /* ✅ Всегда сохраняет квадратную форму */
-}
-
-/* Значок скидки ("SALE") */
-.sale-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    padding: 5px 15px;
-    border: 1px solid var(--text-color);
-    color: var(--text-color);
-    background: white;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 600;
+    aspect-ratio: 1/1;
 }
 
 /* Контейнер с текстом */
 .product-info {
+    position: relative;
+    z-index: 2; /* Поднимаем текст над оверлеем */
     display: flex;
     flex-direction: column;
     margin-top: 15px;
@@ -84,34 +83,38 @@
     gap: 10px;
 }
 
-/* Цена товара (актуальная) */
+/* Актуальная цена */
 .discount-price {
     color: var(--text-color);
     font-weight: 700;
 }
 
-/* Старая цена (зачеркнутая) */
+/* Старая цена (зачёркнутая) */
 .old-price {
     opacity: 0.5;
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: line-through;
 }
 
-/* Кнопка "Add to Cart" */
+/* Кнопка "Add to Cart"  */
 .btn-buy {
+    position: relative;
+    z-index: 2; /* Кнопка теперь кликабельна */
     width: 100%;
     padding: 12px;
-    border: none;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
     color: var(--text-color);
     background: none;
-    transition: opacity 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 600;
 }
 
 .btn-buy:hover {
-    opacity: 0.5;
+    color: white;
+    background: var(--text-color);
 }
 
 /* Адаптивность */
@@ -139,10 +142,5 @@
     .btn-buy {
         padding: 10px;
         font-size: 12px;
-    }
-
-    .sale-badge {
-        padding: 3px 10px;
-        font-size: 10px;
     }
 }
