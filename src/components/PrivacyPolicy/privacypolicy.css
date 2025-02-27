@@ -3,9 +3,6 @@
     max-width: 800px;
     padding: 40px;
     margin: 80px auto;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     text-align: left;
 }
 
