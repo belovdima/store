@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProductStore } from "../../store/productStore";
 import { useCartStore } from "../../store/cartStore";
@@ -8,11 +8,10 @@ export const Shop: React.FC = () => {
     const { addToCart } = useCartStore();
     const navigate = useNavigate();
 
-    // Переход на страницу товара
-    const handleCardClick = (e: React.MouseEvent, productId: number) => {
-        if ((e.target as HTMLElement).closest(".btn-buy")) return;
-        navigate(`/product/${productId}`);
-    };
+    // Отслеживание наведённой карточки
+    const [hoveredProductId, setHoveredProductId] = useState<number | null>(
+        null
+    );
 
     return (
         <div className="shop container">
@@ -22,7 +21,9 @@ export const Shop: React.FC = () => {
                     <div
                         key={product.id}
                         className="product-card"
-                        onClick={(e) => handleCardClick(e, product.id)}>
+                        onClick={() => navigate(`/product/${product.id}`)}
+                        onMouseEnter={() => setHoveredProductId(product.id)}
+                        onMouseLeave={() => setHoveredProductId(null)}>
                         <img src={product.img} alt={product.title} />
                         <h3 className="product-title">{product.title}</h3>
 
@@ -41,14 +42,26 @@ export const Shop: React.FC = () => {
                             )}
                         </p>
 
-                        <button
-                            className="btn-buy"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                addToCart({ ...product, quantity: 1 });
-                            }}>
-                            Add to Cart
-                        </button>
+                        {/* Показываем размеры только при наведении */}
+                        {hoveredProductId === product.id && (
+                            <div className="size-options">
+                                {product.size.map((size) => (
+                                    <button
+                                        key={size}
+                                        className="size-btn"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            addToCart({
+                                                ...product,
+                                                quantity: 1,
+                                                size,
+                                            });
+                                        }}>
+                                        {size}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>

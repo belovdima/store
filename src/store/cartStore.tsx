@@ -7,6 +7,7 @@ interface CartItem {
     discountPrice?: number;
     img: string;
     quantity: number;
+    size: string; // ✅ Добавлено поле "size"
 }
 
 interface CartStore {
@@ -23,12 +24,16 @@ export const useCartStore = create<CartStore>((set) => ({
 
     addToCart: (item) =>
         set((state) => {
-            const existingItem = state.cart.find((i) => i.id === item.id);
+            const existingItem = state.cart.find(
+                (i) => i.id === item.id && i.size === item.size // ✅ Учитываем размер
+            );
             const price = item.discountPrice ?? item.price;
 
             const updatedCart = existingItem
                 ? state.cart.map((i) =>
-                      i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+                      i.id === item.id && i.size === item.size
+                          ? { ...i, quantity: i.quantity + 1 }
+                          : i
                   )
                 : [...state.cart, { ...item, price, quantity: 1 }];
 

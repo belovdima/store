@@ -1,6 +1,7 @@
 /* Сетка товаров */
 .products-grid {
     display: grid;
+    align-items: start;
     margin-top: 40px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
@@ -10,41 +11,32 @@
 .product-card {
     position: relative;
     display: flex;
-    overflow: hidden; /* Оверлей не выходит за границы */
+    overflow: hidden;
     align-items: center;
     flex-direction: column;
+    min-height: 420px;
     padding: 20px;
     border-radius: 10px;
-    transition: background 0.3s ease;
     text-align: center;
 }
 
-.product-link {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    color: inherit;
-    text-decoration: none;
-}
-
-/* Оверлей при наведении (теперь не перекрывает кнопку) */
+/* Оверлей при наведении */
 .product-card::after {
     position: absolute;
-    z-index: 0; /* Оставляем его под кнопкой */
+    z-index: 0;
     opacity: 0;
     background: rgba(0, 0, 0, 0.05);
     content: "";
     transition: opacity 0.3s ease;
+    pointer-events: none;
     inset: 0;
 }
 
-/* Наведение на карточку */
 .product-card:hover::after {
     opacity: 1;
 }
 
-/* Блок с изображением */
+/* Блок изображения */
 .product-image-wrapper {
     display: flex;
     align-items: center;
@@ -55,7 +47,7 @@
     background: #f7f7f7;
 }
 
-/* Само изображение */
+/* Изображение товара */
 .product-card img {
     width: 100%;
     max-width: 280px;
@@ -67,7 +59,7 @@
 /* Контейнер с текстом */
 .product-info {
     position: relative;
-    z-index: 2; /* Поднимаем текст над оверлеем */
+    z-index: 2;
     display: flex;
     flex-direction: column;
     margin-top: 15px;
@@ -82,7 +74,7 @@
     font-weight: 700;
 }
 
-/* Блок цены */
+/* Цена товара */
 .product-price {
     display: flex;
     align-items: center;
@@ -92,36 +84,48 @@
     gap: 10px;
 }
 
-/* Актуальная цена */
-.discount-price {
-    color: var(--text-color);
-    font-weight: 700;
-}
-
-/* Старая цена (зачёркнутая) */
+/* Старая цена */
 .old-price {
     opacity: 0.5;
     font-size: 16px;
     text-decoration: line-through;
 }
 
-/* Кнопка "Add to Cart"  */
-.btn-buy {
-    position: relative;
-    z-index: 2; /* Кнопка теперь кликабельна */
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--text-color);
-    border-radius: 5px;
+/* Новая цена */
+.discount-price {
     color: var(--text-color);
+    font-weight: 700;
+}
+
+/* Размеры (отображаются при наведении) */
+.size-options {
+    display: flex;
+    visibility: hidden;
+    justify-content: center;
+    height: 35px;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    gap: 8px;
+}
+
+.product-card:hover .size-options {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Кнопки размеров */
+.size-btn {
+    padding: 6px 10px;
+    border: 1px solid var(--text-color);
+    border-radius: 4px;
     background: none;
+    cursor: pointer;
     transition: background 0.3s ease, color 0.3s ease;
-    text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
 }
 
-.btn-buy:hover {
+.size-btn:hover {
     color: white;
     background: var(--text-color);
 }
@@ -148,8 +152,8 @@
         font-size: 18px;
     }
 
-    .btn-buy {
-        padding: 10px;
-        font-size: 12px;
+    .size-btn {
+        padding: 5px 8px;
+        font-size: 10px;
     }
 }
