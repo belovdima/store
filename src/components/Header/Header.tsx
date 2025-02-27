@@ -14,9 +14,6 @@ export const Header: React.FC = () => {
 
                 {/* Меню */}
                 <nav className={`nav-links ${isOpen ? "open" : ""}`}>
-                    <Link to="/" onClick={() => setIsOpen(false)}>
-                        Home
-                    </Link>
                     <Link to="/shop" onClick={() => setIsOpen(false)}>
                         Shop
                     </Link>
