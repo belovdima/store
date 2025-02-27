@@ -139,11 +139,11 @@
 }
 
 /* На мобилках уменьшаем стрелку */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     .backArrow {
-        top: 15px;
-        left: 15px;
-        font-size: 14px;
+        top: 120px;
+        left: 20px;
+        font-size: 40px;
     }
 }
 
