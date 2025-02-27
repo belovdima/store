@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; // ⬅ Импортируем useNavigate
 import { useProductStore } from "../../store/productStore";
 import { useCartStore } from "../../store/cartStore";
 import styles from "./ProductPage.module.css";
@@ -8,6 +8,7 @@ export const ProductPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const { products } = useProductStore();
     const { addToCart } = useCartStore();
+    const navigate = useNavigate(); // ⬅ Используем navigate для возврата назад
 
     const product = products.find((p) => p.id === Number(id));
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
@@ -18,6 +19,11 @@ export const ProductPage: React.FC = () => {
 
     return (
         <div className={styles.productPage}>
+            {/* Стрелка "назад" */}
+            <div className={styles.backArrow} onClick={() => navigate(-1)}>
+                ← Back
+            </div>
+
             <img
                 className={styles.productImg}
                 src={product.img}
