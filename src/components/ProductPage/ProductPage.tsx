@@ -1,20 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProductStore } from "../../store/productStore";
 import { useCartStore } from "../../store/cartStore";
-import styles from "./ProductPage.module.css"; // Импортируем стили
+import styles from "./ProductPage.module.css";
 
 export const ProductPage: React.FC = () => {
-    const { id } = useParams<{ id: string }>(); // Получаем id из URL
+    const { id } = useParams<{ id: string }>();
     const { products } = useProductStore();
     const { addToCart } = useCartStore();
 
-    // Находим товар по id
     const product = products.find((p) => p.id === Number(id));
+    const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
-    // Если товара нет — показываем сообщение
     if (!product) {
-        return <h2 style={{ textAlign: "center" }}>Товар не найден 😢</h2>;
+        return <h2 className={styles.notFound}>Product not found 😢</h2>;
     }
 
     return (
@@ -24,10 +23,14 @@ export const ProductPage: React.FC = () => {
                 src={product.img}
                 alt={product.title}
             />
+
             <div className={styles.productDetails}>
                 <h1 className={styles.productTitle}>{product.title}</h1>
 
-                {/* Цена */}
+                <p className={styles.productColor}>
+                    Color: <span>{product.color}</span>
+                </p>
+
                 <p className={styles.productPrice}>
                     {product.discountPrice ? (
                         <>
@@ -43,11 +46,31 @@ export const ProductPage: React.FC = () => {
                     )}
                 </p>
 
-                {/* Кнопка "Добавить в корзину" */}
+                {/* Size Selection */}
+                <div className={styles.sizeSelector}>
+                    <p>Select size:</p>
+                    <div className={styles.sizes}>
+                        {product.size.map((size) => (
+                            <button
+                                key={size}
+                                className={`${styles.sizeButton} ${
+                                    selectedSize === size ? styles.selected : ""
+                                }`}
+                                onClick={() => setSelectedSize(size)}>
+                                {size}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Add to Cart Button */}
                 <button
                     className={styles.btnBuy}
-                    onClick={() => addToCart({ ...product, quantity: 1 })}>
-                    Add to Cart
+                    onClick={() =>
+                        selectedSize && addToCart({ ...product, quantity: 1 })
+                    }
+                    disabled={!selectedSize}>
+                    {selectedSize ? "Add to Cart" : "Select size"}
                 </button>
             </div>
         </div>

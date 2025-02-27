@@ -1,28 +1,44 @@
+/* Main Container */
 .productPage {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
-    gap: 40px;
+    gap: 50px;
 }
 
+/* Product Image */
 .productImg {
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    max-width: 450px;
+    height: auto;
     border-radius: 10px;
     object-fit: cover;
 }
 
+/* Product Details */
 .productDetails {
     max-width: 500px;
 }
 
+/* Product Title */
 .productTitle {
     text-transform: uppercase;
     font-size: 28px;
     font-weight: 700;
 }
 
+/* Product Color */
+.productColor {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.productColor span {
+    font-weight: 600;
+}
+
+/* Price */
 .productPrice {
     display: flex;
     align-items: center;
@@ -32,18 +48,57 @@
     gap: 10px;
 }
 
+/* Old Price */
 .oldPrice {
     opacity: 0.5;
     font-size: 18px;
     text-decoration: line-through;
 }
 
+/* New Price */
 .discountPrice {
     color: var(--text-color);
     font-weight: 700;
 }
 
+/* Size Selection */
+.sizeSelector {
+    margin: 20px 0;
+}
+
+.sizes {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    gap: 10px;
+}
+
+/* Size Buttons */
+.sizeButton {
+    padding: 8px 12px;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sizeButton:hover {
+    color: white;
+    background: var(--text-color);
+}
+
+/* Selected Size */
+.selected {
+    color: white;
+    background: var(--text-color);
+}
+
+/* Add to Cart Button */
 .btnBuy {
+    width: 100%;
     padding: 14px 24px;
     border: 1px solid var(--text-color);
     color: var(--text-color);
@@ -58,4 +113,50 @@
 .btnBuy:hover {
     color: white;
     background: var(--text-color);
+}
+
+/* Disabled Button */
+.btnBuy:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .productPage {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .productDetails {
+        max-width: 100%;
+    }
+
+    .sizes {
+        justify-content: center;
+    }
+
+    .btnBuy {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .productTitle {
+        font-size: 24px;
+    }
+
+    .productPrice {
+        font-size: 20px;
+    }
+
+    .sizeButton {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .btnBuy {
+        font-size: 14px;
+    }
 }
