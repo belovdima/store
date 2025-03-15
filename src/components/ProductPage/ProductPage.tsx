@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // ⬅ Импортируем useNavigate
+import { useParams, useNavigate } from "react-router-dom";
 import { useProductStore } from "../../store/productStore";
 import { useCartStore } from "../../store/cartStore";
 import styles from "./ProductPage.module.css";
@@ -8,7 +8,7 @@ export const ProductPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const { products } = useProductStore();
     const { addToCart } = useCartStore();
-    const navigate = useNavigate(); // ⬅ Используем navigate для возврата назад
+    const navigate = useNavigate();
 
     const product = products.find((p) => p.id === Number(id));
     const [selectedSize, setSelectedSize] = useState<string | null>(null);

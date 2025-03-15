@@ -131,6 +131,51 @@
     background: var(--text-color);
 }
 
+/* Блок сортировки */
+.sort-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+/* Выпадающий список сортировки */
+.sort-select {
+    padding: 8px 12px;
+    border: 1px solid var(--text-color);
+    background: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 14px;
+}
+
+.sort-select:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Панель фильтров */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.filters select {
+    padding: 10px;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border 0.3s ease;
+    font-size: 14px;
+}
+
+.filters select:hover {
+    border-color: black;
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
     .products-grid {
@@ -156,5 +201,15 @@
     .size-btn {
         padding: 5px 8px;
         font-size: 10px;
+    }
+    .filters {
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .filters select {
+        width: 80%;
+        text-align: center;
     }
 }
